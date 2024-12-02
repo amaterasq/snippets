@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "snippets"
+version = "0.1.0"
+description = "Python snippets"
+authors = ["Vlad P <perepechcko.vlad@ya.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pytest = "^8.3.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
