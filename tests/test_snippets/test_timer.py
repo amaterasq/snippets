@@ -1,17 +1,17 @@
 import time
 import pytest
 import asyncio
-from snippets.timer import timeit
+from snippets.timer_decorator import timeit_sync, timeit_async
 
 
 # Синхронная функция для теста
-@timeit
+@timeit_sync
 def sync_function(x: float) -> None:
     time.sleep(x)
 
 
 # Асинхронная функция для теста
-@timeit
+@timeit_async
 async def async_function(x: float) -> float:
     await asyncio.sleep(x)
     return x
