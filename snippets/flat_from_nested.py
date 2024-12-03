@@ -1,6 +1,6 @@
 from typing import Any, Hashable, Mapping, Union
 
-NestedMapping = Union[Mapping[Hashable, Any], list[Any]]
+NestedMapping = Union[Mapping[Hashable, Any], list[Any], set[Any], tuple[Any, ...]]
 
 
 def get_flat_dict_from_nested_mapping(
@@ -21,7 +21,7 @@ def get_flat_dict_from_nested_mapping(
 
     for key, value in nested_dict.items() if isinstance(nested_dict, Mapping) else enumerate(nested_dict):
         new_key = f"{_parent_key}{sep}{key}" if _parent_key else str(key)
-        if isinstance(value, (Mapping, list)):
+        if isinstance(value, (Mapping, list, tuple, set)):
             items.update(get_flat_dict_from_nested_mapping(value, sep=sep, _parent_key=new_key))
         else:
             items[new_key] = value

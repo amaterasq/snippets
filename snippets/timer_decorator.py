@@ -2,8 +2,7 @@ import random
 import time
 import functools
 import asyncio
-from typing import Callable, TypeVar, Awaitable, ParamSpec, Union
-
+from typing import Callable, TypeVar, ParamSpec, Any, Coroutine
 
 F_Spec = ParamSpec("F_Spec")
 F_Return = TypeVar("F_Return")
@@ -24,8 +23,8 @@ def timeit_sync(func: Callable[F_Spec, F_Return]) -> Callable[F_Spec, F_Return]:
 
 
 def timeit_async(
-    func: Callable[F_Spec, Awaitable[F_Return]]
-) -> Callable[F_Spec, Awaitable[F_Return]]:
+    func: Callable[F_Spec, Coroutine[Any, Any, F_Return]]
+) -> Callable[F_Spec, Coroutine[Any, Any, F_Return]]:
     """Декоратор для замера времени выполнения асинхронных функций."""
 
     @functools.wraps(func)
@@ -52,10 +51,9 @@ async def aslp(t: float) -> float:
 
 
 async def main() -> list[float]:
-    tasks = [asyncio.create_task(aslp(random.uniform(0, 1))) for _ in range(5)]
+    tasks: list[asyncio.Task[float]] = [asyncio.create_task(aslp(random.uniform(0, 1))) for _ in range(5)]
     await asyncio.gather(*tasks)
     return [t.result() for t in tasks]
-    # return await aslp(0.3)
 
 
 if __name__ == "__main__":
