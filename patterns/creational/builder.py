@@ -54,7 +54,7 @@ class House:
         return self._roof
 
     @roof.setter
-    def roof(self, roof: ROOF_TYPES):
+    def roof(self, roof: ROOF_TYPES) -> None:
         self._roof = roof
 
     @property
@@ -62,7 +62,7 @@ class House:
         return self._floor
 
     @floor.setter
-    def floor(self, floor: FLOOR_TYPES):
+    def floor(self, floor: FLOOR_TYPES) -> None:
         self._floor = floor
 
     @property
@@ -70,7 +70,7 @@ class House:
         return self._garage
 
     @garage.setter
-    def garage(self, garage: GARAGE_TYPES):
+    def garage(self, garage: GARAGE_TYPES) -> None:
         self._garage = garage
 
     def __str__(self) -> str:
