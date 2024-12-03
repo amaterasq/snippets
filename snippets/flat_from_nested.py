@@ -10,7 +10,7 @@ def get_flat_dict_from_nested_mapping(
     _parent_key: str = "",
 ) -> dict[str, Any]:
     """
-    Преобразует вложенный Mapping или список в плоскую структуру.
+    Преобразует вложенный Mapping или Container (кроме плоских - str, bytes) в плоскую структуру.
 
     :param nested_dict: Вложенная структура для преобразования.
     :param sep: Разделитель между уровнями вложенности. По умолчанию - ".".
@@ -32,3 +32,4 @@ def get_flat_dict_from_nested_mapping(
 if __name__ == "__main__":
     print(get_flat_dict_from_nested_mapping({"a": {"b": "c"}}))
     print(get_flat_dict_from_nested_mapping({"a": [{"b": "c"}, {"d": "e"}]}))
+    print(get_flat_dict_from_nested_mapping([{"a": [{"b": "c"}, {"d": "e"}]}]))
