@@ -1,6 +1,3 @@
-from typing import Iterable
-
-
 def only_args(*args: float) -> float:
     return sum(args)
 

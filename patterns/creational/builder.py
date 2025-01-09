@@ -13,27 +13,27 @@ Example: https://github.com/python-telegram-bot/python-telegram-bot/wiki/Builder
 
 """
 
-from abc import ABC, abstractmethod
+import abc
 from typing import Literal, Self
 
 
-class AbstractHouseBuilder(ABC):
+class AbstractHouseBuilder(abc.ABC):
     """The AbstractHouseBuilder interface specifies methods for creating the different parts of the House objects."""
 
     @property
-    @abstractmethod
+    @abc.abstractmethod
     def product(self) -> "House":
         raise NotImplementedError
 
-    @abstractmethod
+    @abc.abstractmethod
     def build_roof(self) -> Self:
         raise NotImplementedError
 
-    @abstractmethod
+    @abc.abstractmethod
     def build_floor(self) -> Self:
         raise NotImplementedError
 
-    @abstractmethod
+    @abc.abstractmethod
     def build_garage(self) -> Self:
         raise NotImplementedError
 

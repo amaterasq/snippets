@@ -1,7 +1,7 @@
 import time
 import pytest
 import asyncio
-from snippets.timer_decorator import timeit_sync, timeit_async
+from snippets.decorators.timer_decorator import timeit_sync, timeit_async
 
 
 # Синхронная функция для теста
