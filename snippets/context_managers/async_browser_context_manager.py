@@ -1,13 +1,13 @@
 import asyncio
 from contextlib import asynccontextmanager, AsyncExitStack
 from types import TracebackType
-from typing import Literal, Self, Type
+from typing import Literal, Self, Type, AsyncGenerator
 
 BROWSER_NAME = Literal["Safari", "Chrome", "Brave"]
 
 
 class Browser:
-    def __init__(self, name: BROWSER_NAME):
+    def __init__(self, name: BROWSER_NAME) -> None:
         self.name = name
 
     async def find(self, query: str) -> str:
@@ -25,7 +25,7 @@ class Browser:
 
 
 @asynccontextmanager
-async def get_browser(browser_name: BROWSER_NAME):
+async def get_browser(browser_name: BROWSER_NAME) -> AsyncGenerator[Browser, None]:
     print(f"Before async context manager (contextlib): opening browser {browser_name}")
     try:
         yield Browser(browser_name)
